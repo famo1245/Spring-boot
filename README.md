@@ -1,2 +1,2 @@
 # Spring-boot
-Spring boot 강의 연습
+인프런 Spring boot 강의 연습

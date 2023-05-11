@@ -1,0 +1,22 @@
+spring:
+#  datasource:
+#    url: jdbc:h2:mem:test # 메모리에서 h2 db 사용, db 따로 띄울 필요 없이 테스트 가능
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop      # 실행 시 entity 정보를 지우고 새로 실행
+# create 다 drop하고 시작, create-drop은 끝날 때 drop 하여 자원 정리
+#    properties:
+#      hibernate:
+##        show_sql: true
+#        format_sql: true
+
+# spring boot 에서는 별도의 설정 없으면 메모리 모드로 돌아감
+# test 설정과 운영에서의 설정을 달리 가지는 것이 좋음
+
+logging.level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace

@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -175,14 +176,27 @@ public class ValidationItemControllerV2 {
     public String addItemV4(@ModelAttribute Item item, BindingResult bindingResult,
                             RedirectAttributes redirectAttributes) {
 
+/*        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
+            return "validation/v2/addForm";
+        }*/
+
         //binding result는 이미 자신의 target 객체가 뭔지 안다
         log.info("objectName={}", bindingResult.getObjectName());
         log.info("targer={}", bindingResult.getTarget());
 
         //검증 로직
+        //아래와 동일
+//        ValidationUtils.rejectIfEmptyOrWhite(bindingResult, "itemName", "required");
         if (!StringUtils.hasText(item.getItemName())) {
             bindingResult.rejectValue("itemName", "required");
         }
+        //앞에서 형 일치 validation을 하면 이름이 비었을때 오류 메시지가 안나와서 이곳에 적음
+        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
+            return "validation/v2/addForm";
+        }
+
         if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) {
             bindingResult.rejectValue("price", "range", new Object[]{1000, 1000000}, null);
         }

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <!--/* 괄호를 2개 쓰면 converter 적용 */-->
+    <li>${number}: <span th:text="${number}"></span></li>
+    <li>${{number}}: <span th:text="${{number}}"></span></li>
+    <!--/* 객체 호출이므로 toString() 호출 */-->
+    <li>${ipPort}: <span th:text="${ipPort}"></span></li>
+    <li>${{ipPort}}: <span th:text="${{ipPort}}"></span></li>
+</ul>
+</body>
+</html>

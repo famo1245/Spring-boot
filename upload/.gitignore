@@ -35,3 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### upload file ###
+file/
+
+### sensitive information ###
+application-secret.properties

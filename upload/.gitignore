@@ -37,7 +37,7 @@ out/
 .vscode/
 
 ### upload file ###
-upload/file/
+/file/
 
 ### sensitive information ###
 application-secret.properties

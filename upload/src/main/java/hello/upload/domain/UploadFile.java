@@ -9,4 +9,8 @@ public class UploadFile {
     // 사용자가 같은 이름으로 파일을 업로드할 수 있기 때문
     private String storeFileName;
 
+    public UploadFile(String uploadFileName, String storeFileName) {
+        this.uploadFileName = uploadFileName;
+        this.storeFileName = storeFileName;
+    }
 }
